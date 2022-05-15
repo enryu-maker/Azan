@@ -1,4 +1,4 @@
-import {View, Text, FlatList,Image} from 'react-native';
+import {View, Text, FlatList,Image,Animated} from 'react-native';
 import React from 'react';
 import {COLORS, SIZES} from '../../Constants/Theme';
 import {Header} from '../../Component/Header';
@@ -7,6 +7,7 @@ import {data} from '../../Constants/dummyData';
 import FormInput from '../../Component/InputForm';
 import {IMAGES} from '../../Constants/Images';
 export default function Search() {
+  
   return (
     <View
       style={{
@@ -33,7 +34,7 @@ export default function Search() {
         placeholder={'search... تفص'}
         img={IMAGES.filter}
       />
-      <FlatList
+      <Animated.FlatList
         style={{
           marginBottom: SIZES.height < 700 ? 20 : 10,
         }}
@@ -41,7 +42,13 @@ export default function Search() {
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
         renderItem={({item, index}) => {
-          return <VerticalCard key={index} />;
+          return( 
+            <Animated.View 
+          >
+          <VerticalCard key={index} 
+          />
+          </Animated.View>
+          )
         }}
       />
     </View>
