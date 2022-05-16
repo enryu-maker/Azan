@@ -18,7 +18,7 @@ export const Header = ({ containerStyle, title, titleStyle, leftComponent, right
                 leftComponent
             }
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{  ...FONTS.h2, ...titleStyle,color:COLORS.text,lineHeight:35}}>{title}</Text>
+            <Text style={{  ...FONTS.h2,color:COLORS.text,lineHeight:35, ...titleStyle}}>{title}</Text>
             </View>
             {
                 rightComponent

@@ -4,6 +4,8 @@ export const IMAGES={
     compass:require('../assets/compass.png'),
     setting:require('../assets/setting.png'),
     filter:require('../assets/filter.png'),
+    heart:require('../assets/heart.png'),
+
 
 }
 

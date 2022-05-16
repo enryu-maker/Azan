@@ -1,4 +1,4 @@
-import {View, Text, FlatList,Image,Animated} from 'react-native';
+import {View, Text, FlatList,Image,Animated,ImageBackground} from 'react-native';
 import React from 'react';
 import {COLORS, SIZES} from '../../Constants/Theme';
 import {Header} from '../../Component/Header';
@@ -13,6 +13,7 @@ export default function Search() {
       style={{
         flex: 1,
         backgroundColor: COLORS.background,
+        
       }}>
       <Header title={'Search تفص'} />
       <FormInput
@@ -45,7 +46,7 @@ export default function Search() {
           return( 
             <Animated.View 
           >
-          <VerticalCard key={index} 
+          <VerticalCard key={index} name={item.name} urdu_name={item.urdu_name} is_favourite={item.is_favourite} distance={item.distance} type={item.type}
           />
           </Animated.View>
           )

@@ -3,7 +3,7 @@ import React from 'react';
 import MainCard from '../../Component/mainCard';
 import {COLORS,SIZES} from '../../Constants/Theme';
 import {Header} from '../../Component/Header';
-import { data } from '../../Constants/dummyData';
+import { data,Masjid } from '../../Constants/dummyData';
 export default function HomeScreen() {    
   const xOffset = new Animated.Value(0);
   const transitionAnimation = index => {
@@ -57,7 +57,7 @@ export default function HomeScreen() {
         { useNativeDriver: true }
       )}
       pagingEnabled={true}
-      data={data}
+      data={Masjid}
       showsHorizontalScrollIndicator={false}
       
       keyExtractor={(item) => item.id}
@@ -65,7 +65,7 @@ export default function HomeScreen() {
         renderItem={({item, index}) => {
           return( 
         <Animated.View key={index} style={[styles.itemWrapper, transitionAnimation(index)]}>
-          <MainCard />
+          <MainCard name={item.name} urdu_name={item.urdu_name} favourite={item.is_favourite} time={item.time_data} />
           </Animated.View>
           )
         }}

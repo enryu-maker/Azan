@@ -6,6 +6,7 @@ export const COLORS = {
   red: '#B02E0C',
   text: '#44633F',
   black: '#000000',
+  inactive:"#B7ADCF"
 };
 export const SIZES = {
   // global sizes
