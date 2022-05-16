@@ -4,7 +4,7 @@ import { COLORS, FONTS, SIZES } from '../Constants/Theme'
 import { Header } from './Header'
 import { IMAGES } from '../Constants/Images'
 import SubCard from './SubCard'
-import { Time_data } from '../Constants/dummyData'
+
 
 export default function MainCard({
     name,
