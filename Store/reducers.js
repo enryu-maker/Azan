@@ -14,5 +14,7 @@ export default (state = initialState, action) => {
         ...state,
         adder: action.payload,
       };
+    default:
+      return state;
   }
 };

@@ -6,8 +6,12 @@ import VerticalCard from '../../Component/VerticalCard';
 import {data} from '../../Constants/dummyData';
 import FormInput from '../../Component/InputForm';
 import {IMAGES} from '../../Constants/Images';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateFavourite } from '../../Store/action';
 export default function Search() {
-  
+  const dispatch=useDispatch()
+  const current_List=JSON.parse(useSelector(state => state.Reducers.favourite));
+  console.log(data)
   return (
     <View
       style={{
@@ -47,6 +51,9 @@ export default function Search() {
             <Animated.View 
           >
           <VerticalCard key={index} name={item.name} urdu_name={item.urdu_name} is_favourite={item.is_favourite} distance={item.distance} type={item.type}
+          onPress={()=>{
+            dispatch(updateFavourite(current_List,item))
+          }}
           />
           </Animated.View>
           )

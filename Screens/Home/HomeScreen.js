@@ -4,8 +4,15 @@ import MainCard from '../../Component/mainCard';
 import {COLORS,SIZES} from '../../Constants/Theme';
 import {Header} from '../../Component/Header';
 import { data,Masjid } from '../../Constants/dummyData';
-export default function HomeScreen() {    
+import { useDispatch, useSelector } from 'react-redux'
+import { Init } from '../../Store/action';
+export default function HomeScreen() {   
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+    dispatch(Init())
+  },[]) 
   const xOffset = new Animated.Value(0);
+  const favMasjid = useSelector(state => state.Reducers.favourite);
   const transitionAnimation = index => {
     return {
       transform: [
@@ -57,15 +64,14 @@ export default function HomeScreen() {
         { useNativeDriver: true }
       )}
       pagingEnabled={true}
-      data={Masjid}
+      data={JSON.parse(favMasjid)}
       showsHorizontalScrollIndicator={false}
-      
       keyExtractor={(item) => item.id}
       horizontal
         renderItem={({item, index}) => {
           return( 
         <Animated.View key={index} style={[styles.itemWrapper, transitionAnimation(index)]}>
-          <MainCard name={item.name} urdu_name={item.urdu_name} favourite={item.is_favourite} time={item.time_data} />
+          <MainCard key={index} name={item.name} urdu_name={item.urdu_name} favourite={item.is_favourite} time={item.time_data} />
           </Animated.View>
           )
         }}

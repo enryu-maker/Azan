@@ -9,7 +9,8 @@ export default function VerticalCard({
   urdu_name,
   is_favourite=false,
   type="NA",
-  distance=0
+  distance=0,
+  onPress
 }) {
   return (
     <View style={{
@@ -39,7 +40,7 @@ export default function VerticalCard({
         justifyContent:"center",
         marginRight:20
     }}
-    // onPress={onPress}
+    onPress={onPress}
     >
     <Image source={IMAGES.heart} style={{
         width:22,

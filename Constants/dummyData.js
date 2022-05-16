@@ -1,32 +1,3 @@
-export const data=[
-    {
-        id:1,
-        name:"Noori Masjid Nashik",
-        urdu_name:"نوری مسجد ناسک",
-        is_favourite:true,
-        type:"Sunni سنی",
-        distance:1.2
-    },
-    {
-        id:2,
-        name:"Alhyat Masjid Nashik",
-        urdu_name:"نوری مسجد ناسک",
-        is_favourite:false,
-        type:"Ahl-iHadith اہلِ حدیث",
-        distance:1.6
-
-
-    },
-    {
-        id:3,
-        name:"Noori Masjid Nashik",
-        urdu_name:"نوری مسجد ناسک",
-        is_favourite:false,
-        type:"Deobandi دیوبند",
-        distance:2
-    },
-]
-
 export const Time_data=[
     {
         id:1,
@@ -77,6 +48,38 @@ export const Time_data=[
         time:"7:03"
     },
 ]
+
+export const data=[
+    {
+        id:1,
+        name:"Noori Masjid Nashik",
+        urdu_name:"نوری مسجد ناسک",
+        is_favourite:true,
+        type:"Sunni سنی",
+        distance:1.2,
+        time_data:Time_data
+    },
+    {
+        id:2,
+        name:"Alhyat Masjid Nashik",
+        urdu_name:"نوری مسجد ناسک",
+        is_favourite:false,
+        type:"Ahl-iHadith اہلِ حدیث",
+        distance:1.6,
+        time_data:Time_data
+    },
+    {
+        id:3,
+        name:"Badi Masjid Nashik",
+        urdu_name:"نوری مسجد ناسک",
+        is_favourite:false,
+        type:"Deobandi دیوبند",
+        distance:2,
+        time_data:Time_data
+    },
+]
+
+
 export const Masjid=[
     {
         id:1,
