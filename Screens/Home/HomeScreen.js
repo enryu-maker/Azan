@@ -12,7 +12,14 @@ export default function HomeScreen() {
     dispatch(Init())
   },[]) 
   const xOffset = new Animated.Value(0);
+  let Parsed_list=[]
   const favMasjid = useSelector(state => state.Reducers.favourite);
+  if (favMasjid.length>0 && favMasjid!=[]){
+    Parsed_list=JSON.parse(favMasjid)
+  }
+  else{
+    Parsed_list=[]
+  }
   const transitionAnimation = index => {
     return {
       transform: [
@@ -64,7 +71,7 @@ export default function HomeScreen() {
         { useNativeDriver: true }
       )}
       pagingEnabled={true}
-      data={JSON.parse(favMasjid)}
+      data={Parsed_list}
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}
       horizontal
