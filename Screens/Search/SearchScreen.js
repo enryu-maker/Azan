@@ -10,8 +10,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateFavourite } from '../../Store/action';
 export default function Search() {
   const dispatch=useDispatch()
-  const current_List=JSON.parse(useSelector(state => state.Reducers.favourite));
-  console.log(data)
+  let Parsed_list=[]
+  const current_List=useSelector(state => state.Reducers.favourite);
+  if (current_List.length>0 && current_List!=[]){
+    try{
+      Parsed_list=JSON.parse(current_List)
+    }
+    catch{
+      Parsed_list=current_List
+    }
+  }
+  else{
+    Parsed_list=[]
+  }
   return (
     <View
       style={{
@@ -52,7 +63,7 @@ export default function Search() {
           >
           <VerticalCard key={index} name={item.name} urdu_name={item.urdu_name} is_favourite={item.is_favourite} distance={item.distance} type={item.type}
           onPress={()=>{
-            dispatch(updateFavourite(current_List,item))
+            dispatch(updateFavourite(Parsed_list,item))
           }}
           />
           </Animated.View>

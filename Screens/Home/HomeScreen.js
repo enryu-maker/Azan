@@ -1,11 +1,10 @@
-import {View, Text, FlatList,StyleSheet,Animated} from 'react-native';
+import {View, Text, FlatList,StyleSheet,Animated,Alert} from 'react-native';
 import React from 'react';
 import MainCard from '../../Component/mainCard';
 import {COLORS,SIZES} from '../../Constants/Theme';
 import {Header} from '../../Component/Header';
-import { data,Masjid } from '../../Constants/dummyData';
 import { useDispatch, useSelector } from 'react-redux'
-import { Init } from '../../Store/action';
+import { deleteFavourite, Init } from '../../Store/action';
 export default function HomeScreen() {   
   const dispatch = useDispatch()
   React.useEffect(()=>{
@@ -15,7 +14,12 @@ export default function HomeScreen() {
   let Parsed_list=[]
   const favMasjid = useSelector(state => state.Reducers.favourite);
   if (favMasjid.length>0 && favMasjid!=[]){
-    Parsed_list=JSON.parse(favMasjid)
+    try{
+      Parsed_list=JSON.parse(favMasjid)
+    }
+    catch{
+      Parsed_list=favMasjid
+    }
   }
   else{
     Parsed_list=[]
@@ -78,7 +82,24 @@ export default function HomeScreen() {
         renderItem={({item, index}) => {
           return( 
         <Animated.View key={index} style={[styles.itemWrapper, transitionAnimation(index)]}>
-          <MainCard key={index} name={item.name} urdu_name={item.urdu_name} favourite={item.is_favourite} time={item.time_data} />
+          <MainCard key={index} name={item.name} urdu_name={item.urdu_name} favourite={item.is_favourite} time={item.time_data} 
+          onPress={()=>{
+            Alert.alert(
+              "Remove Favourite Masjid",
+              "پسندیدہ مسجد ہٹانا",
+              [
+                { text: "Remove ہٹانا", onPress: () => {
+                  dispatch(deleteFavourite(Parsed_list,index))
+                } 
+              },
+              {
+                text: "Cancel رد",
+                onPress: () => {},
+                style: "cancel"
+              }
+              ]
+            );
+          }} />
           </Animated.View>
           )
         }}

@@ -10,7 +10,7 @@ export default function MainCard({
     name,
     urdu_name,
     time,
-    favourite=false
+    onPress
 }) {
   return (
     <Animated.View >
@@ -62,13 +62,13 @@ export default function MainCard({
             justifyContent:"center",
             marginRight:20
         }}
-        // onPress={onPress}
+        onPress={onPress}
         >
         <Image source={IMAGES.heart} style={{
             width:22,
             height:22,
             alignSelf:"center",
-            tintColor:favourite?COLORS.red:COLORS.inactive
+            tintColor:COLORS.red
         }}/>
         </TouchableOpacity>
         }
